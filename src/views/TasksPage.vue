@@ -1,7 +1,7 @@
 <template>
     <BasePage title="Tasks Page" :loading="loading">
         <template v-slot:topRight>
-            <BaseButton label="add"/>
+            <BaseButton label="add" @clicked="$router.push('/taskform')"/>
         </template>
         <template v-slot:secondLine>
             <BaseList :items="tasksToDisplay" />

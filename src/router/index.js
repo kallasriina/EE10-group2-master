@@ -47,7 +47,25 @@ const router = createRouter({
       name: 'personDetail',
       component: () => import('../views/PersonDetailPage.vue')
 
-    }
+    },
+    {
+      path: '/projectform',
+      name: 'projectForm',
+      component: () => import('../views/ProjectForm.vue')
+
+    },
+    {
+      path: '/projectform/:id',
+      name: 'projectFormEdit',
+      component: () => import('../views/ProjectForm.vue')
+
+    },
+    {
+      path: '/taskform',
+      name: 'taskForm',
+      component: () => import('../views/TaskForm.vue')
+
+    },
   ]
 })
 

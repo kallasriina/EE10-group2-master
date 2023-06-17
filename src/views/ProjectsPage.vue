@@ -1,7 +1,7 @@
 <template>
     <BasePage title="Projects Page" :loading="loading">
         <template v-slot:topRight>
-            <BaseButton label="add"/>
+            <BaseButton label="add" @clicked="$router.push('/projectform')"/>
         </template>
         <template v-slot:secondLine>
             <BaseList :items="projectsToDisplay" />
@@ -17,6 +17,7 @@ import db from '../utils/db.js'
 import BaseList from '../components/BaseList.vue'
 import BasePage from '../components/BasePage.vue'
 import BaseButton from '../components/BaseButton.vue'
+import { all } from 'axios'
 
 export default {
 
@@ -24,15 +25,20 @@ export default {
     data() {
         return {
             projects: [],
-            tasks: []
+            tasks: [],
+            loading: true
         }
 
     },
 
     created() {
+        Promise.all([
+            db.get("js4projects").then(data => { this.projects = data }),
+            db.get("js4tasks").then(data => { this.tasks = data })
+        ]).then (() => {
+            this.loading = false
+        })
 
-        db.get("js4projects").then(data => { this.projects = data })
-        db.get("js4tasks").then(data => { this.tasks = data })
     },
     components: {
 

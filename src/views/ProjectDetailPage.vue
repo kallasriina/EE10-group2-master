@@ -1,7 +1,7 @@
 <template>
     <BasePage title="project detail" :loading="loading">
         <template v-slot:topRight>
-            <BaseButton label="edit"/>
+            <BaseButton label="edit" @clicked="$router.push('/projectform/' + $route.params.id)"/>
         </template>
         <template v-slot:secondLine>
             <h2>{{project.project}}</h2>
